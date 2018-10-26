@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6486176/7100172/css/fonts.css" />
+    <link rel="icon" href="images/favicon.ico" type="image/png" sizes="16x16">
+    <link href="css/tutorial.css" type="text/css" rel="stylesheet">
+    <link href="css/footer.css" type="text/css" rel="stylesheet">
+    <link href="css/default.css" type="text/css" rel="stylesheet">
+    <link href="css/header.css" type="text/css" rel="stylesheet">
+    <script src="jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/velocity.js" type="text/javascript"></script>
+    <script src="js/tutorial.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/header.js" type="text/javascript"></script>
+    <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <title>Couchbase Query Tutorial 1</title>
+  </head>
+  <body> 
+    <header>
+      <div class="top-navigation">
+        <div class="container">
+          <div class="navigation-wrapper">
+            <ul class="top-menu right">
+              <li><a href="https://training.couchbase.com/" target="_blank" data-letters="Training" class="hyperlink-effect">Training </a></li>
+              <li><a href="https://developer.couchbase.com" target="_blank" data-letters="Developer" class="hyperlink-effect">Developer</a></li>
+              <li><a href="https://support.couchbase.com" target="_blank" data-letters="Support" class="hyperlink-effect">Support</a>
+                <ul class="sub-menu">
+                  <li class="overview" ><a href="https://www.couchbase.com/products/couchbase-data-platform" class="hyperlink-effect">overview</a></li>
+                  <li>
+                    <a href="https://support.couchbase.com" target="_blank" class="hyperlink-effect">support login</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hyperlink-effect">professional services</a>
+                  </li>
+                  <li>
+                    <a href="https://www.couchbase.com/nosql-resources" class="hyperlink-effect">resources</a>
+                  </li>
+                  <li>
+                    <a href="https://developer.couchbase.com" target="_blank" class="hyperlink-effect">developer portal</a>
+                  </li>
+                  <li>
+                    <a href="https://forums.couchbase.com" target="_blank" class="hyperlink-effect">forums</a>
+                  </li>
+                </ul></li>
+              <li><a href="https://www.couchbase.com/subscriptions-and-support" target="_blank" data-letters="blog" class="hyperlink-effect">Subscriptions</a></li>
+              <li><a href="https://www.couchbase.com/contact" data-letters="contact us" class="hyperlink-effect">contact us</a></li>
+              <li class="search-box"> 
+                <div class="animate search clickable">
+                  <div class="element circle"></div>
+                  <div class="element line"></div> 
+                </div>
+              </li>
+            </ul>
+            <div class="search-form">
+              <form>
+                <button class="submit"><img src="images/search_glass.png" alt="Search" /></button>
+                <input type="text" name="text" placeholder="Search Couchbase">
+              </form> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <div class="container">
+          <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="logo">
+            <a href="/">
+              <img src="images/couchbase_logo.svg" class="svg-img" alt="Couchbase"/>
+            </a>
+          </div>
+          <ul class="main-menu">
+            <li class="list-menu">
+              <a href="#" data-letters="Products">Products</a>
+              <ul class="sub-menu full-width">
+                <li class="overview product-submenu"><a href="https://www.couchbase.com/products/couchbase-data-platform" class="hyperlink-effect">overview</a></li>
+                <div class="sub-menu-container">
+                  <div class="drop-down-title">
+                    <a href="https://www.couchbase.com/products/couchbase-data-platform"><span class="link-text hyperlink-effect">Couchbase Data Platform Overview</span></a>
+                    <a href="https://www.couchbase.com/downloads" id="UI - Top Nav Download" class="right"><span class="transparent-btn">download now</span></a>
+                  </div>
+                  <div class="sub-menu-links">
+                    <ul class="platform-link">
+                      <li><a href="https://www.couchbase.com/products/couchbase-server" class="hyperlink-effect">Couchbase Server</a></li>
+                      <li><a href="https://www.couchbase.com/products/n1ql" class="hyperlink-effect">N1QL</a></li>
+                      <li><a href="https://developer.couchbase.com/documentation/server/5.0/fts/full-text-intro.html" class="hyperlink-effect">Search</a></li>
+                      <li><a href="http://docs.couchbase.com/prerelease/analytics-dp2/introduction.html" class="hyperlink-effect">Analytics</a></li>
+                      <li><a href="https://developer.couchbase.com/documentation/server/current/sdk/java/start-using-sdk.html" class="hyperlink-effect">SDKs</a></li>
+                    </ul>
+                    <ul class="platform-link">
+                      <li><a href="https://www.couchbase.com/products/mobile" class="hyperlink-effect">Couchbase Mobile</a></li>
+                      <li><a href="https://developer.couchbase.com/documentation/mobile/1.4/guides/couchbase-lite/index.html" class="hyperlink-effect">Couchbase Lite</a></li>
+                      <li><a href="https://developer.couchbase.com/documentation/mobile/1.4/guides/sync-gateway/index.html" class="hyperlink-effect">Sync Gateway</a></li>
+                    </ul>
+                    <ul class="platform-link">
+                      <li><a href="#" class="hyperlink-effect">Connectors</a></li>
+                      <li><a href="https://www.couchbase.com/products/big-data" class="hyperlink-effect">Big Data</a></li>
+                      <li><a href="https://www.couchbase.com/products/sql-integration" class="hyperlink-effect">SQL</a></li>
+                    </ul>
+                    <div class="link-with-img platform-link">
+                      <div class="bg-img"><img src="https://www.couchbase.com/binaries/content/gallery/website/homepage/get-started-updated2.svg" alt="Get Started"/></div>
+                      <span></span>
+                      <a href="https://www.couchbase.com/get-started-developing-nosql" class=" red-btn" id="UI - Products Nav Promo">GET STARTED</a>
+                    </div>
+                  </div>
+                </div>
+
+              </ul>
+            </li>
+            <li class="list-menu">
+              <a href="#" data-letters="solutions">solutions</a>
+              <ul class="sub-menu">
+                <li class="overview"><a href="" class="hyperlink-effect">overview</a></li>
+                <li>
+                  <a href="https://www.couchbase.com/products/big-data" class="hyperlink-effect">Big Data</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/solutions/cloud" class="hyperlink-effect">Cloud</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/solutions/iot" class="hyperlink-effect">IoT</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/products/mobile" class="hyperlink-effect">Mobility</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="https://www.couchbase.com/customers" data-letters="customers">customers</a>
+            </li>
+            <li> 
+              <a href="https://www.couchbase.com/partners" data-letters="Partners">Partners</a>
+
+            </li>
+            <li class="list-menu"> 
+              <a href="https://www.couchbase.com/about" data-letters="Company">company</a>
+              <ul class="sub-menu">
+                <li class="overview"><a href="" class="hyperlink-effect">overview</a></li>
+                <li>
+                  <a href="https://www.couchbase.com/about" class="hyperlink-effect">About</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/leadership" class="hyperlink-effect">Leadership</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/careers" class="hyperlink-effect">careers</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/news-and-press-releases" class="hyperlink-effect">news &AMP; press release</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/contact" class="hyperlink-effect">contact us</a>
+                </li>
+              </ul>
+            </li>
+            <li class="responsive list-menu">
+              <a href="https://training.couchbase.com" target="_blank" data-letters="trainnig">trainnig</a>
+            </li>
+            <li class="responsive list-menu">
+              <a href="https://developer.couchbase.com" target="_blank" data-letters="developer">developer</a>
+            </li>
+            <li class="responsive list-menu">
+              <a href="https://support.couchbase.com" data-letters="support">support</a>
+              <ul class="sub-menu">
+                <li class="overview"><a href="https://support.couchbase.com" target="_blank" class="hyperlink-effect">overview</a></li>
+                <li>
+                  <a href="https://support.couchbase.com" target="_blank" class="hyperlink-effect">support login</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/couchbase-services" class="hyperlink-effect">professional services</a>
+                </li>
+                <li>
+                  <a href="https://www.couchbase.com/resources" class="hyperlink-effect">resources</a>
+                </li>
+                <li>
+                  <a href="https://developer.couchbase.com" target="_blank" class="hyperlink-effect">developer portal</a>
+                </li>
+                <li>
+                  <a href="https://forums.couchbase.com" target="_blank" class="hyperlink-effect">forums</a>
+                </li>
+              </ul>
+            </li>
+            <li class="responsive list-menu">
+              <a href="https://www.couchbase.com/subscriptions-and-support" data-letters="Subscriptions">Subscriptions </a>
+            </li>
+            <li class="responsive list-menu">
+              <a href="https://www.couchbase.com/contact" data-letters="CONTACT US">CONTACT US </a>
+            </li>
+            <li class="responsive list-menu">
+              <div class="search-form">
+                <form>
+                  <button class="submit"><img src="images/search_glass.png" alt="Search"/></button>
+                  <input type="text" name="text" placeholder="Search Couchbase">
+                  <span class="clear">Clear</span>
+                </form> 
+              </div>
+            </li>
+            <li class="responsive get-started list-menu">
+              <a href="https://www.couchbase.com/downloads" class="red-btn">get-started </a>
+            </li>
+          </ul>
+          <div class="get-started">
+            <a href="https://www.couchbase.com/downloads" class="red-btn">get started</a>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+    <section class="third-level-banner darkpurple-gradient">
+      <div class="v-middle-wrapper">
+        <div class="v-middle-inner">
+          <div class="v-middle">
+            <div class="container">
+              <h4>N1QL</h4>
+              <h1>Query Language Tutorials</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="query">
+      <div class="col-two-outer">
+        <div id="all">
+          <div class="col-two">
+            <div id="info" class="query-inner-left">
+              <div class="" id="slide">
+                <div id="content"></div>
+              </div>
+              <div id="footer" class="links-bottom">
+                <div id="prev" class="button">
+                  <a>Previous Lesson</a>
+                </div>
+                <div id="index" class="button enabled">
+                  <a href="">Lesson Index</a>
+                </div>
+                <div id="next" class="button">
+                  <a>Next Lesson</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-two">
+            <div id="try" class="query-inner-right">
+              <div id="input">
+                <div class="run-btn" id="run">
+                  <button>Run</button>
+                </div>
+                <div id="query">
+                  <pre id="iedit">Loading..</pre>
+                </div>
+              </div>
+              <div id="result" >
+                <pre id="redit"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- put slide count below before release. 0 = autodetect (slow) -->
+        <input id="max" type="hidden" value="54">
+      </div>
+    </section>
+    <section class="get-started">
+      <div class="container">
+        <div class="align-items-center get-inner-content">
+          <h3 class="left">Start creating amazing customer experiences today.</h3>
+          <a href="https://www.couchbase.com/contact" class="right white-btn">Get in touch</a>
+        </div>
+      </div>
+    </section>
+    <section class="section-footer">
+      <div class="container">
+        <div class="footer-links">
+          <div class="col-five">
+            <div class="footer-logo">
+              <a href="/">
+                <img src="images/couchbase_logo.svg" class="svg-img" alt="Couchbase"/>
+              </a>
+            </div>
+            <div class="bottom-para">
+              <p>2440 West El Camino Real
+                Mountain View, CA 94040
+                United States
+              </p>
+              <a href="https://www.couchbase.com/contact" class="white-btn">Contact Us</a>
+              <a class="bold-text" href="tel:1-650-417-7500">1-650-417-7500</a>
+            </div>
+          </div>
+          <div class="col-five">
+            <ul>
+              <li> <span class="heading-link">Company</span> </li>
+              <li> <a href="https://www.couchbase.com/about">About</a> </li>
+              <li> <a href="https://www.couchbase.com/leadership">Leadership</a> </li>
+              <li> <a href="https://www.couchbase.com/news-and-press-releases">News & Press</a> </li>
+              <li> <a href="https://www.couchbase.com/careers">Careers</a> </li>
+              <li> <a href="https://www.couchbase.com/contact">Contact Us</a> </li>
+              <li> <a href="https://www.couchbase.com/request-pricing">Pricing</a> </li>
+            </ul>
+          </div>
+          <div class="col-five">
+            <ul>
+              <li> <span class="heading-link">Support</span> </li>
+              <li> <a href="https://developer.couchbase.com" target="_blank">Developer Portal</a> </li>
+              <li> <a href="https://forums.couchbase.com" target="_blank">Forums</a> </li>
+              <li> <a href="https://www.couchbase.com/services">Professional Services</a> </li>
+              <li> <a href="https://support.couchbase.com/" target="_blank">Support Login</a> </li>
+              <li> <a href="https://training.couchbase.com" target="_blank">Training</a> </li>
+            </ul>
+          </div>
+          <div class="col-five">
+            <ul>
+              <li> <span class="heading-link">Quicklinks</span> </li>
+              <li> <a href="https://blog.couchbase.com" target="_blank">Blog</a> </li>
+              <li> <a href="https://www.couchbase.com/downloads">Downloads</a> </li>
+              <li> <a href="https://www.couchbase.com/nosql-resources/events">Events</a></li>
+              <li> <a href="https://www.couchbase.com/get-started-developing-nosql" >Get Started</a> </li>
+              <li> <a href="https://training.couchbase.com" target="_blank">Online Training</a> </li>
+              <li> <a href="https://www.couchbase.com/resources">Resources</a> </li>
+              <li> <a href="https://www.couchbase.com/nosql-resources/why-nosql">Why NoSQL</a> </li>
+            </ul>
+          </div>
+          <div class="col-five">
+            <ul class="social-icons">
+              <li>
+                <a href="https://www.facebook.com/Couchbase" class="icon">
+                  <svg version="1.1" id="icons" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="560.215px"
+                       height="560.215px" viewBox="26.363 116.363 560.215 560.215" enable-background="new 26.363 116.363 560.215 560.215"
+                       xml:space="preserve">
+                  <switch>
+                  <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                  <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                  </i:pgfRef>
+                  </foreignObject>
+                  <g i:extraneous="self">
+                  <path id="Facebook__x28_alt_x29__1_" d="M586.578,209.575c0-48.96-44.252-93.212-93.212-93.212H119.575
+                        c-48.96,0-93.212,44.252-93.212,93.212v373.791c0,48.96,44.252,93.212,93.212,93.212H306V464.732h-68.732V371.52H306V334.8
+                        c0-63.083,47.077-119.575,105.452-119.575h75.323v93.212h-75.323c-8.474,0-17.889,10.357-17.889,25.422v37.662h93.212v93.212
+                        h-93.212v211.846h99.803c48.96,0,93.212-44.252,93.212-93.212L586.578,209.575L586.578,209.575z"/>
+                  </g>
+                  </switch>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/couchbase" class="icon">
+                  <svg version="1.1" id="icons" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="542.326px"
+                       height="437.815px" viewBox="32.012 176.622 542.326 437.815" enable-background="new 32.012 176.622 542.326 437.815"
+                       xml:space="preserve">
+                  <switch>
+                  <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                  <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                  </i:pgfRef>
+                  </foreignObject>
+                  <g i:extraneous="self">
+                  <path d="M574.338,227.465c-19.772,8.474-41.428,15.065-64.025,17.889c22.597-14.123,40.486-35.778,48.96-61.2
+                        c-21.655,13.182-45.194,21.655-70.615,27.305c-20.714-21.655-48.96-34.837-80.972-34.837c-61.2,0-111.102,49.902-111.102,111.102
+                        c0,8.474,0.942,16.948,2.825,25.422c-92.271-5.649-174.185-49.902-229.735-117.692c-9.415,16.006-15.065,35.778-15.065,55.551
+                        c0,38.603,19.772,72.498,49.902,92.271c-17.889-0.942-35.778-5.649-50.843-14.123v0.942c0,53.668,38.603,98.862,89.446,109.218
+                        c-9.415,2.825-18.831,3.766-29.188,3.766c-7.532,0-14.123-0.942-20.714-1.883c14.123,44.252,55.551,76.265,103.569,77.206
+                        c-37.662,30.129-85.68,48.018-138.406,48.018c-9.415,0-17.889-0.941-26.363-1.883c48.96,32.012,107.335,49.902,170.418,49.902
+                        c204.314,0,316.357-169.477,316.357-316.357c0-4.708,0-9.415,0-14.123C540.443,269.834,559.274,250.062,574.338,227.465z"/>
+                  </g>
+                  </switch>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/couchbase" class="icon">
+                  <svg version="1.1" id="icons" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="539.537px"
+                       height="540.443px" viewBox="31.071 119.188 539.537 540.443" enable-background="new 31.071 119.188 539.537 540.443"
+                       xml:space="preserve">
+                  <switch>
+                  <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                  <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                  </i:pgfRef>
+                  </foreignObject>
+                  <g i:extraneous="self">
+                  <path id="LinkedIn__x28_alt_x29__1_" d="M531.969,119.188H70.615c-21.655,0-39.545,16.948-39.545,38.603v463.237
+                        c0,21.655,17.889,38.603,39.545,38.603h460.412c21.655,0,39.545-16.948,39.545-38.603V157.791
+                        C571.514,136.135,553.625,119.188,531.969,119.188z M194.898,571.126h-81.914V327.268h81.914V571.126z M154.412,294.314
+                        L154.412,294.314c-28.246,0-46.135-18.831-46.135-42.369s17.889-42.369,46.135-42.369s45.194,17.889,45.194,42.369
+                        C200.548,275.483,182.658,294.314,154.412,294.314z M489.6,571.126h-81.914V441.194c0-32.954-12.24-55.551-41.428-55.551
+                        c-22.597,0-35.778,15.065-41.428,30.129c-1.883,5.649-2.825,12.24-2.825,19.772v136.523h-81.914c0,0,0.942-221.262,0-243.858
+                        h81.914v34.837c11.298-16.948,30.129-40.486,73.44-40.486c53.668,0,94.154,34.837,94.154,110.16L489.6,571.126L489.6,571.126z
+                        M321.065,363.046C321.065,363.046,322.006,362.105,321.065,363.046L321.065,363.046L321.065,363.046z"/>
+                  </g>
+                  </switch>
+                  </svg>
+                </a></li>
+              <li>
+                <a href="https://plus.google.com/+CouchbaseServer" class="icon">
+                  <svg version="1.1" id="icons" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+                       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="542.326px"
+                       height="343.67px" viewBox="36.72 225.573 542.326 343.67" enable-background="new 36.72 225.573 542.326 343.67"
+                       xml:space="preserve">
+                  <switch>
+                  <foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
+                  <i:pgfRef  xlink:href="#adobe_illustrator_pgf">
+                  </i:pgfRef>
+                  </foreignObject>
+                  <g i:extraneous="self">
+                  <g>
+                  <g>
+                  <path d="M209.022,363.046v68.732c0,0,65.908,0,93.212,0c-15.065,44.252-37.662,68.732-93.212,68.732
+                        c-56.492,0-100.745-46.135-100.745-102.628s44.252-102.628,100.745-102.628c30.129,0,48.96,10.357,66.849,25.422
+                        c14.123-14.123,13.182-16.006,48.96-49.902c-31.071-28.246-71.557-45.194-115.809-45.194
+                        C113.926,224.64,36.72,301.846,36.72,396.942s77.206,172.302,172.302,172.302c142.172,0,177.009-124.283,165.711-206.197
+                        C340.837,363.046,209.022,363.046,209.022,363.046z M519.729,366.812v-59.317H477.36v59.317h-61.2v42.369h61.2v61.2h42.369
+                        v-61.2h59.317v-42.369L519.729,366.812L519.729,366.812z"/>
+                  </g>
+                  </g>
+                  </g>
+                  </switch>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-terms">
+          <span>2017 COUCHBASE All rights reserved.</span>
+          <a href="http://www.couchbase.com/privacy-policy" class="bold-text">Privacy Policy</a>
+          <a href="http://www.couchbase.com/terms-of-service" class="bold-text">Terms Of Use</a>
+        </div>
+    </section>
+  </body>
+</html>
