@@ -7,23 +7,24 @@
 os=`uname`
 case $os in
      Linux)
-        LOADER=/opt/couchbase/bin/cbdocloader
+        LOADER=/opt/couchbase/bin/cbimport
         ;;
      Darwin)
         PATH=$PATH:/Applications/Couchbase\ Server.app/Contents/Resources/couchbase-core/bin/
-        LOADER=cbdocloader
+        LOADER=cbimport
         ;;
      *)
-        LOADER=cbdocloader
+        LOADER=cbimport
         ;;
 esac
-tar zxf data.tar.gz
-cd data
-for b in contacts customer reviews product purchases user_profile customer_profile cars car_changes
+
+for b in customers orders
 do
     echo "Populating bucket $b"
-    zip -r $b.zip $b 
-    ${LOADER} -u Administrator -p ${pw} -c ${host}:${clusterport} -b $b -m 100 -d ${b}.zip
-    rm -rf $b
-    rm -f ${b}.zip
+    ${LOADER} json -u Administrator -p ${pw} -c ${host}:${clusterport} -b $b -d file://${b}.json -g %thisdockey% -f lines
 done
+
+# import the two files into two buckets, orders and customers
+# /opt/couchbase/bin/cbimport json -c couchbase://127.0.0.1 -g thisdockey -u Administrator -p password -b orders -d file://orders.json -f lines
+
+# /opt/couchbase/bin/cbimport json -c couchbase://127.0.0.1 -g thisdockey -u Administrator -p password -b customers -d file://customers.json -f lines

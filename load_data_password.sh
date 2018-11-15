@@ -1,21 +1,30 @@
-#Load data:
+# Load data
+# This script requires 1 parameter, the Couchbase administrator password
+# 
+# This script assumes Couchbase bin directory is in path
+#
+. ./settings
+os=`uname`
+case $os in
+     Linux)
+        LOADER=/opt/couchbase/bin/cbimport
+        ;;
+     Darwin)
+        PATH=$PATH:/Applications/Couchbase\ Server.app/Contents/Resources/couchbase-core/bin/
+        LOADER=cbimport
+        ;;
+     *)
+        LOADER=cbimport
+        ;;
+esac
 
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=contacts' -u Administrator:$1  -v  -d authType=none -d proxyPort=11216  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b contacts -s 100 contacts
+for b in customers orders
+do
+    echo "Populating bucket $b"
+    ${LOADER} json -u Administrator -p ${pw} -c ${host}:${clusterport} -b $b -d file://${b}.json -g %thisdockey% -f lines
+done
 
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=customer' -u Administrator:$1  -v  -d authType=none -d proxyPort=11217  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b customer -s 100 customer
+# import the two files into two buckets, orders and customers
+# /opt/couchbase/bin/cbimport json -c couchbase://127.0.0.1 -g thisdockey -u Administrator -p password -b orders -d file://orders.json -f lines
 
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=reviews' -u Administrator:$1  -v  -d authType=none -d proxyPort=11218  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b reviews -s 100 reviews
-
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=product' -u Administrator:$1  -v  -d authType=sasl -d saslPassword=Pr0dct -d proxyPort=11219  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b product -s 100 product
-
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=purchases' -u Administrator:$1  -v  -d authType=sasl -d saslPassword=Prch3s3s -d proxyPort=11220  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b purchases -s 100 purchases
-
-curl http://127.0.0.1:8091/pools/default/buckets -XPOST -d 'name=user_profile' -u Administrator:$1  -v  -d authType=none -d proxyPort=11221  -d ramQuotaMB=200
-/opt/couchbase/bin/cbdocloader -u Administrator -p $1 -n 127.0.0.1:8091 -b user_profile -s 100 user_profile
-
-
+# /opt/couchbase/bin/cbimport json -c couchbase://127.0.0.1 -g thisdockey -u Administrator -p password -b customers -d file://customers.json -f lines

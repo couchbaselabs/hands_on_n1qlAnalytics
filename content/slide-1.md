@@ -1,14 +1,15 @@
 ## <b>Part 1: Setup, Getting Started and Querying</b>
 
 
-Welcome to Querying JSON Data with N1QL!
+Welcome to Querying JSON with SQL++
 
 <b>Session Goals</b>
 
-* Enjoy a gentle introduction to N1QL
+* Enjoy a gentle introduction to SQL++
+* N1QL for Analytics in Couchbase is SQL++
 * Focus on features in common with SQL
 * Try it out! 
 
 <pre id="example">
-SELECT "Welcome to Getting Started Querying with N1QL!" AS Greeting
+SELECT "SQL++ for SQL Users: A Tutorial using N1QL in Couchbase" AS Greeting
 </pre>

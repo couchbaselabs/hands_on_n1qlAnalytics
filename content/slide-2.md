@@ -10,7 +10,7 @@ A simple query in N1QL has three parts to it:
 
 
 <pre id="example">
-SELECT * 
-  FROM contacts 
-    WHERE fname = "Ian"
+SELECT custid, name, address.zipcode, rating
+FROM customers
+ORDER BY custid;
 </pre>

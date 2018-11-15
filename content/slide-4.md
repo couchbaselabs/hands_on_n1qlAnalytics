@@ -1,15 +1,13 @@
 # Part 1: Setup, Getting Started and Querying
 
-## Aliasing
+## Documents, not rows
 
-Both keyspace names and field names can be aliased.
+Data in Couchbase Server is stored in the form of documents, not rows or columns.
 
-Aliases are useful in certain contexts, such as self join or disambiguating field names. 
-We will meet examples of both today.
+The keyspace name can be used to project the complete document.
 
 <pre id="example">
-SELECT c.lname as FamilyName, c.age as Years, 
-        c.email as EmailAddr, c.fname as Name
-  FROM contacts c
-    WHERE c.fname = "Ian" 
+SELECT name
+FROM customers
+WHERE rating > 650;
 </pre>
