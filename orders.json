@@ -1,0 +1,8 @@
+{"custid":"C31","items":[{"itemno":120,"price":88.99,"qty":2},{"itemno":460,"price":99.99,"qty":3}],"order_date":"2017-06-15","orderno":1003,"ship_date":"2017-06-16","thisdockey":"1003"}
+{"custid":"C13","items":[{"itemno":460,"price":100.99,"qty":95},{"itemno":680,"price":8.75,"qty":150}],"order_date":"2017-05-01","orderno":1002,"ship_date":"2017-05-03","thisdockey":"1002"}
+{"custid":"C41","items":[{"itemno":347,"price":19.99,"qty":5},{"itemno":193,"price":28.89,"qty":2}],"order_date":"2017-04-29","orderno":1001,"ship_date":"2017-05-03","thisdockey":"1001"}
+{"custid":"C13","items":[{"itemno":185,"price":21.99,"qty":5},{"itemno":680,"price":20.5,"qty":1}],"order_date":"2017-09-13","orderno":1007,"ship_date":"2017-09-20","thisdockey":"1007"}
+{"custid":"C13","items":[{"itemno":460,"price":99.99,"qty":20}],"order_date":"2017-10-13","orderno":1008,"thisdockey":"1008"}
+{"custid":"C41","items":[{"itemno":680,"price":25.98,"qty":51},{"itemno":120,"price":85,"qty":65},{"itemno":460,"price":99.98,"qty":120}],"order_date":"2017-09-02","orderno":1006,"ship_date":"2017-09-04","thisdockey":"1006"}
+{"custid":"C35","items":[{"itemno":680,"price":9.99,"qty":6},{"itemno":195,"price":35,"qty":4}],"order_date":"2017-07-10","orderno":1004,"ship_date":"2017-07-15","thisdockey":"1004"}
+{"custid":"C37","items":[{"itemno":460,"price":99.98,"qty":2},{"itemno":347,"price":22,"qty":120},{"itemno":780,"price":1500,"qty":1},{"itemno":375,"price":149.98,"qty":2}],"order_date":"2017-08-30","orderno":1005,"thisdockey":"1005"}
