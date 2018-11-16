@@ -33,6 +33,9 @@ $ ./drop_indexes.sh
 #### Create primary key indexes
 $ ./create_indexes.sh
 
+#### Create dataset and link data on to the analytics.
+$ ./create_dataset.sh
+
 #### Run hands_on_n1ql (mac os or centos7). Assumes query engine is on localhost.
 $ ./builds/mac_os/hands_on_n1qlAx
 $ ./builds/centos7/hands_on_n1qlAx
