@@ -27,13 +27,10 @@ $ ./recreate_buckets.sh password
 #### Load buckets 
 $ ./load_data.sh password
 
-#### Drop default indexes on travel-sample
-$ ./drop_indexes.sh
+#### Drop existing datasets
+$ ./drop_dataset.sh
 
-#### Create primary key indexes
-$ ./create_indexes.sh
-
-#### Create dataset and link data on to the analytics.
+#### Create datasets and connect link
 $ ./create_dataset.sh
 
 #### Run hands_on_n1ql (mac os or centos7). Assumes query engine is on localhost.
@@ -41,7 +38,7 @@ $ ./builds/mac_os/hands_on_n1qlAx
 $ ./builds/centos7/hands_on_n1qlAx
 
 #### Run hands_on_n1ql against query engine on a specific host.
-$ ./builds/mac_os/hands_on_n1ql  -queryhost=myqueryhost
+$ ./builds/mac_os/hands_on_n1qlAx -queryhost=myqueryhost
 
 #### open localhost:8000
 

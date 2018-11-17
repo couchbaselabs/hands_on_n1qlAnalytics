@@ -17,7 +17,7 @@ do
     qry+=$b
     let "port += 1"
     echo "Creating bucket $b..."
-    curl ${cluster}/pools/default/buckets -XPOST -d "$qry" -u Administrator:$pw  -v  -d authType=none -d ramQuotaMB=100
+    curl ${cluster}/pools/default/buckets -XPOST -d "$qry" -u Administrator:$pw  -d authType=none -d ramQuotaMB=100
 done
 
 # sleep a bit more to allow bucket creation completion.

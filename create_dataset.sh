@@ -1,7 +1,7 @@
-# create_indexes.sh
+# create_dataset.sh
 . ./settings
 
-# Create datasets and link them.
+echo "Create datasets and link them"
 curl ${axqueryservice} -u Administrator:${pw} -XPOST -d "statement=create dataset on customers;"
 curl ${axqueryservice} -u Administrator:${pw} -XPOST -d "statement=create dataset on orders;"
 curl ${axqueryservice} -u Administrator:${pw} -XPOST -d "statement=connect link Local;"
