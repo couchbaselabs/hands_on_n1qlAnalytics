@@ -1,4 +1,4 @@
-## SQL++ for SQL Users: Quantification
+## Quantification (2)
 
 Universal quantification (a *EVERY* expression) looks very similar, but it
 determines if every *i* in *o.items* has a price that is greater than or equal

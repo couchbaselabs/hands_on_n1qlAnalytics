@@ -1,4 +1,4 @@
-## Added "VALUE"
+## Added "VALUE" (3)
 
 For the simple case discussed before we also have a SQL syntax which uses
 aliases to provide the field names.

@@ -1,7 +1,9 @@
-## Just like SQL
+## Just like SQL (3)
 
-We can also formulate the query using SQL's explicit JOIN syntax.
-And using a LEFT OUTER JOIN in this case yields the same result.
+We can also formulate the previous query using SQL's explicit JOIN syntax.
+
+Here we use a LEFT OUTER JOIN, which does have a slightly different meaning.
+But it returns the same results for the data that we are using.
 
 <pre id="example">
 SELECT c.name, o.order_date

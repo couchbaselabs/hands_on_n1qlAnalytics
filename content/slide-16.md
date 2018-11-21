@@ -1,4 +1,4 @@
-## SQL++ for SQL Users: Quantification
+## Quantification (1)
 
 When dealing with nested arrays one sometimes wants to find out if a statement
 about the whole array is true. To do this we use the concepts of existential

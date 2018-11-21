@@ -11,6 +11,11 @@ as defined in the SQL Standard and supported in all SQL
 implementations.
 We won’t expect any knowledge of advanced or complex SQL features.
 
+Each lesson will populate the Query box with a query that you can either
+simply execute or that you can modify to try out more.
+
+Happy querying!
+
 <pre id="example">
 SELECT "SQL++ for SQL Users: A Tutorial using N1QL in Couchbase" AS Greeting
 </pre>

@@ -1,4 +1,4 @@
-## SQL++ for SQL Users: Quantification
+## Quantification (4)
 
 If we want to get the whole customer information (instead of just getting the
 customer id), we can now take the existential quantification query that we
@@ -16,3 +16,11 @@ WHERE c.custid IN (
     WHERE SOME i IN o.items SATISFIES i.price >= 25.00
 )
 </pre>
+
+
+<b>Thank you ...</b>
+
+... for exploring this far! We hope that you have gained some insight into
+SQL++. For the next steps, please [download Couchbase
+Server](https://www.couchbase.com/downloads) and enjoy Don Chamberlin's [SQL++
+tutorial](https://resources.couchbase.com/sql_tutorial).

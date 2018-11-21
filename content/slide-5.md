@@ -1,4 +1,4 @@
-## Just like SQL
+## Just like SQL (2)
 
 Another example is this simple join query that selects the customer identified
 by "C41", joins the customer with his orders and returns the cutomer name

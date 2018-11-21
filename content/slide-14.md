@@ -1,11 +1,12 @@
-## SQL++ for SQL Users: Unnesting
+## Unnesting (1)
 
-In previous examples we've seen that we have nested data and that we can construct nested data in a query.
+In previous examples we've seen that we have nested data and that we can
+construct nested data in a query.
 
-Now we also need to unnest data. One way to unnest data is using the UNNEST
-clause. In this example bind each order to *o* and use *o.items* to retrieve
-an array of items for the order. By unnesting *o.items*, we effectively join
-each order *o* with each of its items *i*.
+Obviously, we also need to unnest data. One way to unnest data is using the
+UNNEST clause. In this example bind each order to *o* and use *o.items* to
+retrieve an array of items for the order. By unnesting *o.items*, we
+effectively join each order *o* with each of its items *i*.
 
 <pre id="example">
 SELECT o.orderno,

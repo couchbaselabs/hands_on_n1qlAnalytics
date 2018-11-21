@@ -1,4 +1,4 @@
-## SQL++ for SQL Users: Unnesting
+## Unnesting (2)
 
 An alternate way to formulate the previous query is to use a comma (",") in
 the *FROM* clause instead of the *UNNEST* keyword.

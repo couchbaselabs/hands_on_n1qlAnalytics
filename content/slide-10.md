@@ -1,9 +1,9 @@
-## Added "VALUE"
+## Added "VALUE" (1)
 
 One addition to SQL is the *SELECT VALUE* statment.
 
-It is used to return the result of an arbitrary expression - without a
-wrapping record.
+It is used to return the result of an arbitrary expression. This is different
+from a *SELECT* clause which always returns a record.
 
 In this example the expression is the simple access of the variable *name* and
 so the result is a simple array of strings.

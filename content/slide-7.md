@@ -1,6 +1,9 @@
-## Just like SQL
+## Just like SQL (4)
 
-Grouping and aggregation works also as expected. In this example we retrieve the number of orders for the last 3 days that had at least one order.
+Grouping and aggregation works also as expected.
+
+In this example we retrieve the number of orders for the last 3 days that had
+at least one order.
 
 <pre id="example">
 SELECT order_date, count(*) AS cnt
