@@ -1,22 +1,12 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## Just like SQL
 
-Example explanation
-
-<b>Session Goals</b>
-
-* UPDATE THIS
+Grouping and aggregation works also as expected. In this example we retrieve the number of orders for the last 3 days that had at least one order.
 
 <pre id="example">
-SELECT VALUE
-  {"high-rated customers, ordered by rating":
-      (SELECT c.rating, c.custid, c.name
-       FROM customers AS c
-       WHERE c.rating > 650
-       ORDER BY c.rating DESC),
-  "high-rated customers, ordered by zipcode":
-      (SELECT c.address.zipcode, c.custid, c.name
-       FROM customers AS c
-       WHERE c.rating > 650
-       ORDER BY c.address.zipcode)
-  };
+SELECT order_date, count(*) AS cnt
+FROM orders
+GROUP BY order_date
+HAVING count(*) > 0
+ORDER BY order_date DESC
+LIMIT 3;
 </pre>

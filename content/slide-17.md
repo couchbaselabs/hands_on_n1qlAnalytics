@@ -1,17 +1,16 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## SQL++ for SQL Users: Quantification
 
-Example explanation
+Universal quantification (a *EVERY* expression) looks very similar, but it
+determines if every *i* in *o.items* has a price that is greater than or equal
+to 25.
 
-<b>Session Goals</b>
-
-* UPDATE THIS
+The result of the query are the *custids* of all customers that had at least
+one order for which all items have a price that is greater than or equal to
+25. The *DISTINCT* in the *SELECT* clause again ensures that each *custid* is
+only returned once.
 
 <pre id="example">
-FROM customers AS c, orders AS o
-WHERE c.custid = o.custid
-AND o.orderno = 1001
-SELECT o.orderno,
-       c.name AS customer_name, 
-       c.address,
-       o.items AS items_ordered;
+SELECT DISTINCT VALUE o.custid
+FROM orders AS o
+WHERE EVERY i IN o.items SATISFIES i.price >= 25.00;
 </pre>

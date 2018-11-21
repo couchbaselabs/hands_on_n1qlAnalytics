@@ -1,15 +1,18 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## Added "VALUE"
 
-Example explanation
+Going one step further, we don't need to restrict ourselves to a simple field
+lookup to get a value.
 
-<b>Session Goals</b>
-
-* UPDATE THIS
+In this example we construct a record that contains the customer name and and
+an array of all order numbers for this customer. The array is constructed
+using a nested *SELECT VALUE* query.
 
 <pre id="example">
-SELECT VALUE c1.name
-FROM customers AS c1
-WHERE EVERY r IN
-   (SELECT VALUE c2.rating FROM customers AS c2)
-SATISFIES c1.rating >= r;
+SELECT VALUE {
+  "CustomerName": c.name,
+  "Orders": (SELECT VALUE o.orderno FROM orders AS o
+            WHERE o.custid = c.custid)
+}
+FROM customers AS c
+WHERE c.custid = "C41";
 </pre>

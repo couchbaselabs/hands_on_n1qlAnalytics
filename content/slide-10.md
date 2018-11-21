@@ -1,14 +1,15 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## Added "VALUE"
 
-Example explanation
+One addition to SQL is the *SELECT VALUE* statment.
 
-<b>Session Goals</b>
+It is used to return the result of an arbitrary expression - without a
+wrapping record.
 
-* UPDATE THIS
+In this example the expression is the simple access of the variable *name* and
+so the result is a simple array of strings.
 
 <pre id="example">
-SELECT c1.name
-FROM customers AS c1
-WHERE c1.rating IN
-   (SELECT VALUE MAX(c2.rating) FROM customers AS c2);
+SELECT VALUE name
+FROM customers
+WHERE rating > 650;
 </pre>

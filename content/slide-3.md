@@ -1,13 +1,11 @@
-# Part 1: Setup, Getting Started and Querying
+## Data
 
-## Documents, not rows
-
-Data in Couchbase Server is stored in the form of documents, not rows or columns.
-
-The keyspace name can be used to project the complete document.
+Looking further at a record from *orders* by running the query on this
+page we can see that the *items* field contains another nested
+datastructure, an array (which contains 2 more records).
 
 <pre id="example">
-SELECT c.name, c.rating
-FROM customers AS c
-WHERE c.custid = "C41";
+SELECT VALUE o
+FROM orders o
+WHERE o.orderno = 1004;
 </pre>

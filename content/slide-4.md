@@ -1,10 +1,7 @@
-# Part 1: Setup, Getting Started and Querying
+## Just like SQL
 
-## Documents, not rows
-
-Data in Couchbase Server is stored in the form of documents, not rows or columns.
-
-The keyspace name can be used to project the complete document.
+Moving on to queries, the good news is that many SQL++ queries will look quite familiar to
+you. For example, consider this simple query, which will get the names of all customers that have a rating that is greater than 650.
 
 <pre id="example">
 SELECT name

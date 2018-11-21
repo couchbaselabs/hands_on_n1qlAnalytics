@@ -1,15 +1,11 @@
-# Part 1: Setup, Getting Started and Querying
+## Just like SQL
 
-## Simple arithmetic and comparison
-
-We can perform basic arithmetic and comparison in expressions.
-
-Try using different arithmetic and comparison operators.
-
-For example, N1QL supports BETWEEN. Use this to select contacts between the ages of 21 and 65.
+We can also formulate the query using SQL's explicit JOIN syntax.
+And using a LEFT OUTER JOIN in this case yields the same result.
 
 <pre id="example">
-SELECT VALUE [name, rating]
-FROM customers
-WHERE rating > 650;
+SELECT c.name, o.order_date
+FROM customers AS c LEFT OUTER JOIN orders AS o
+  ON c.custid = o.custid
+WHERE c.custid = "C41";
 </pre>

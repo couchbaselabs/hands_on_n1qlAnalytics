@@ -1,17 +1,21 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## SQL++ for SQL Users: Unnesting
 
-Example explanation
+In previous examples we've seen that we have nested data and that we can construct nested data in a query.
 
-<b>Session Goals</b>
-
-* UPDATE THIS
+Now we also need to unnest data. One way to unnest data is using the UNNEST
+clause. In this example bind each order to *o* and use *o.items* to retrieve
+an array of items for the order. By unnesting *o.items*, we effectively join
+each order *o* with each of its items *i*.
 
 <pre id="example">
-SELECT VALUE c1.name
-FROM customers AS c1
-WHERE EVERY r IN
-   (SELECT VALUE c2.rating
-    FROM customers AS c2
-    WHERE c2.rating IS KNOWN)
-SATISFIES c1.rating >= r;
+SELECT o.orderno,
+       o.order_date,
+       i.itemno AS item_number,
+       i.qty AS quantity
+FROM orders AS o UNNEST o.items AS i
+WHERE i.qty > 100
+ORDER BY o.orderno, item_number;
 </pre>
+
+The result of this query are "flat" records constructed out of order/lineitem
+pairs.

@@ -1,17 +1,18 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## SQL++ for SQL Users: Quantification
 
-Example explanation
+An interesting aspect of the *EVERY* expression is that it is trivially true,
+if the array is empty. I.e. The previous query would return the *custid* for
+an order, if *o.items* is empty.
 
-<b>Session Goals</b>
+If this is not intended, we can address this by ensuring that *o.items* has at
+least one element.
 
-* UPDATE THIS
+As there are no orders with 0 items in the dataset this query will return the
+same result as the previous one.
 
 <pre id="example">
-FROM customers AS c, orders AS o
-WHERE c.custid = o.custid
-AND o.orderno = 1001
-SELECT o.orderno,
-       c.name AS customer_name,
-       c.address,
-       o.items AS items_ordered;
+SELECT DISTINCT VALUE o.custid
+FROM orders AS o
+WHERE EVERY i IN o.items SATISFIES i.price >= 25.00
+  AND array_count(o.items) > 0;
 </pre>

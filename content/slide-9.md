@@ -1,15 +1,18 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## Not exactly like SQL ...
 
-Example explanation
+*SELECT \** is a special case.
+It is often used to explore data - and in a schema-less system the exploration is even more important as there is no schema to guide query writing.
 
-<b>Session Goals</b>
+To support the exploration use-case *SELECT \** returns an record that
+contains a field for each variable that is in scope (in ths case *c* and *o*)
+where each field contains the binding for the variable.
 
-* UPDATE THIS
+So, each result record contains a *c* field containing a record from
+*customers* and an *o* field containing a record from *orders*.
 
 <pre id="example">
-SELECT c1.name
-FROM customers AS c1
-WHERE c1.rating =
-   (SELECT MAX(c2.rating)
-    FROM customers AS c2);
+SELECT *
+FROM customers AS c, orders AS o
+WHERE c.custid = o.custid
+  AND c.rating > 650;
 </pre>

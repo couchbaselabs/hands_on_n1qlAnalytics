@@ -1,14 +1,14 @@
-## <b>Part 1: SQL++ (SQL for JSON) Tutorial </b>
+## Added "VALUE"
 
-Example explanation
+For the simple case discussed before we also have a SQL syntax which uses
+aliases to provide the field names.
 
-<b>Session Goals</b>
-
-* UPDATE THIS
+The previous formulation of this query and this formulation are equivalent.
 
 <pre id="example">
-SELECT VALUE c1.name
-FROM customers AS c1
-WHERE c1.rating =
-   (SELECT VALUE MAX(c2.rating) FROM customers AS c2)[0];
+SELECT c.name AS CustomerName,
+       o.order_date AS OrderDate
+FROM customers AS c, orders AS o
+WHERE c.custid = o.custid
+  AND c.rating > 650;
 </pre>
