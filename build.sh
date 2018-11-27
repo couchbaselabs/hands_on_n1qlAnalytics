@@ -4,6 +4,7 @@
 sleep 60
 ./drop_dataset.sh
 ./create_dataset.sh
+./recreate_user.sh
 case `uname` in
      Linux)
        ./builds/centos7/hands_on_n1qlAx &

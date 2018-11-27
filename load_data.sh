@@ -10,8 +10,7 @@ case $os in
         LOADER=/opt/couchbase/bin/cbimport
         ;;
      Darwin)
-        PATH=$PATH:/Applications/Couchbase\ Server.app/Contents/Resources/couchbase-core/bin/
-        LOADER=cbimport
+        LOADER=/Applications/Couchbase\ Server.app/Contents/Resources/couchbase-core/bin/cbimport
         ;;
      *)
         LOADER=cbimport
@@ -21,7 +20,8 @@ esac
 for b in customers orders
 do
     echo "Populating bucket $b"
-    ${LOADER} json -u Administrator -p ${pw} -c ${host}:${clusterport} -b $b -d file://${b}.json -g %thisdockey% -f lines
+    "${LOADER}" json -u Administrator -p ${pw} -c ${host}:${clusterport} -b $b -d file://${b}.json \
+      -g %thisdockey% -f lines
 done
 
 # import the two files into two buckets, orders and customers

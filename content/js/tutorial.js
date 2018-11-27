@@ -108,9 +108,7 @@ function run() {
   var url = '/query/service';
   var ie = ace.edit('iedit');
   var query = 'statement=' + encodeURIComponent(ie.getValue()) ;
- // $.post(url, query, ran).fail(failed);
-    $.ajax({"type":"POST","url":url,"data":query,"success":ran,"username":"Administrator","password":"password"}).fail(failed);
-
+  $.ajax({"type":"POST","url":url,"data":query,"success":ran,"username":"tutorial","password":"tutorial"}).fail(failed);
 }
 
 function failed(data) {
