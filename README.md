@@ -33,6 +33,9 @@ $ ./drop_dataset.sh
 #### Create datasets and connect link
 $ ./create_dataset.sh
 
+#### Create a read-only user for the tutorial
+$ ./recreate_user.sh
+
 #### Run hands_on_n1ql (mac os or centos7). Assumes query engine is on localhost.
 $ ./builds/mac_os/hands_on_n1qlAx
 $ ./builds/centos7/hands_on_n1qlAx
